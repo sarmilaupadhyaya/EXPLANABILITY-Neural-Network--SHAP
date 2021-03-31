@@ -2,7 +2,7 @@ from tensorflow import keras
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.utils import to_categorical
-from tensorflow.keras.models import Sequential
+from tensorflow.keras.models import Sequential, load_model, save_model
 from tensorflow.keras.layers import Dense, LSTM, Embedding, Input
 from sklearn.model_selection import train_test_split
 
@@ -26,16 +26,13 @@ def train(model, x_train, x_val, y_train, y_val):
     return model
 
 
-def save_model(model, model_path):
-
-    model.save(model_path)
 
 def loading_model(model_path):
-
+    
     return keras.models.load_model(model_path)
 
 
-def main(train_padded=None, train_label=None,load_model=False, model_path="modelbilstm.h5"):
+def main(train_padded=None, train_label=None,load_model=False, model_path="data/modelbilstm.h5"):
     
     x_train, x_val, y_train, y_val = train_test_split(train_padded, train_label, shuffle = True, random_state = 123)
     if not load_model:
@@ -44,5 +41,4 @@ def main(train_padded=None, train_label=None,load_model=False, model_path="model
         save_model(model, model_path)
     else:
         model = loading_model(model_path)
-
     return model, x_train,x_val,y_train, y_val
