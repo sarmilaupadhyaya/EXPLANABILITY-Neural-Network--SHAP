@@ -51,25 +51,25 @@ conda env update --file requirements.txt
 
 ```
 
-# RUN ALL
+1. RUN ALL
 First create virtual Environment and activate it.
 
 This code will read data, train model, analyse the data and finally explain it and save the figures inside data folder
 ```
-python3 src/main.py -huaodata data/human_test_S.csv
+python src/main.py -huaodata data/human_test_S.csv
 
 
 ```
 
-# RUN ALL with data analysis
+2.  RUN ALL with data analysis
 
 ```
-python3 src/main.py -huaodata data/human_test_S.csv -analysis True
+python src/main.py -huaodata data/human_test_S.csv -analysis True
 
 
 ```
 
-# If you want to load the model and tokenizer already trained, provide the path of them. The default path for model and tokenizer os inside data.
+3. If you want to load the model and tokenizer already trained, provide the path of them. The default path for model and tokenizer os inside data.
 
 ```
 python3 src/main.py -huaodata data/human_test_S.csv -load_model data/<model name> -tokenizer data/<tokenizer name>
